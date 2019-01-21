@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './scss/style.scss';
 
 import Header from './components/Header';
+import Main from './components/Main';
 
 class App extends React.Component {
 
@@ -12,7 +13,7 @@ class App extends React.Component {
     return(
       <main>
         <Header />
-        <h1>Hello World</h1>
+        <Main />
       </main>
     );
   }
