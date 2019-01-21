@@ -12,7 +12,7 @@ class Header extends React.Component {
         <nav>
           <div className="nav-left">
             <ul>
-              <li><img className="logo" src="logo.png" alt=""/></li>
+              <li><img className="logo" src="../assets/icons/logo.png" alt=""/></li>
               <li className="green">Explore</li>
               <li>News</li>
               <li>Top Setlists</li>
