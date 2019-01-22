@@ -3,17 +3,31 @@ import React from 'react';
 class SearchColumn extends React.Component {
   constructor(props){
     super(props);
+    this.state = {};
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  handleChange({ target: { name, value }}){
+    this.setState({ [name]: value });
+  }
+  
   render(){
     return (
       <div className="search-column">
         <div className="search-section">
           <h2>Search</h2>
-          <input type="text" name="" placeholder="Search for an artist..."/>
+          <input onChange={this.handleChange} value={this.state.search || ''} type="text" name="search" placeholder="Search for an artist..."/>
         </div>
-        <div className="search-prompt">
-          ↖︎ Type to begin exploring!
+        <div>
+          {!this.state.search
+            ?
+            <h1><div className="search-prompt">
+            ↖︎ Type to begin exploring!
+            </div></h1>
+            :
+            <h1>2</h1>
+          }
+
         </div>
         <div className="search-results">
           <div className="artist-result">
