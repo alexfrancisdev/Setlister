@@ -1,22 +1,33 @@
 import React from 'react';
+import axios from 'axios';
 
 class SearchColumn extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      searchResults: []
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.artistSearch = this.artistSearch.bind(this);
   }
 
   handleChange({ target: { name, value }}){
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }), this.artistSearch();
   }
-  
+
+  artistSearch(){
+    axios
+      .get(`https://api.spotify.com/v1/search?q=${this.state.search}&type=artist`, {headers: { 'Authorization': 'Bearer BQCv753gemwRoVTBLgNoW7qjkA3tYdfdo6UeOpHCwoKwHrM9RFY4YRWL7-ODWEYteGXxdT-DShbK9EgXM8sp2uucxjOiLdUPdNiMgNMvRPzO1o0ipVKwMOvfCAm70oLc_xpHBSWUUbLd-lU7k00P1qIEFSlUmgSxX2VOD4DT_9lEKXalqLuULQTF1XFnjdSv76CQ7OZYpYk3TY0zLQCyMcv2qN9jV-AUg8I4hDOOEbL3h3yC1r5_V6he_gop2TBcSkFhAIkeODz08WJc0w'} })
+      .then(result => this.setState({ searchResults: result.data }));
+    console.log(this.state.searchResults.artist);
+  }
+
   render(){
     return (
       <div className="search-column">
         <div className="search-section">
           <h2>Search</h2>
-          <input onChange={this.handleChange} value={this.state.search || ''} type="text" name="search" placeholder="Search for an artist..."/>
+          <input onChange={this.handleChange} value={this.state.search || ''} type="text" name="search" placeholder="Search for an artist..."  autoComplete="off"/>
         </div>
         <div>
           {!this.state.search
@@ -25,7 +36,13 @@ class SearchColumn extends React.Component {
             ↖︎ Type to begin exploring!
             </div></h1>
             :
-            <h1>2</h1>
+            <div>
+              {this.state.searchResults.artist && this.state.searchResults.artist.map(
+                artist =>
+                <p key={artist.mbid}>{artist.name}</p>
+
+              )}
+            </div>
           }
 
         </div>
