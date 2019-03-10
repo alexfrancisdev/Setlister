@@ -9,9 +9,24 @@ class ArtistColumn extends React.Component {
 
   render(){
     return (
-      <h1>
-      Hello World
-      </h1>
+      <div>
+        <div>
+          {!this.props.selectedArtistData
+            ?
+            <h1>Sorry, we do not have data for this artist yet</h1>
+            :
+            <h1>{this.props.selectedArtistData}</h1>
+          }
+        </div>
+        <div>
+          {!this.props.eventData
+            ?
+            <h1>No events</h1>
+            :
+            <h1>{this.eventData.totalEntries.length} events on Songkick</h1>
+          }
+        </div>
+      </div>
     )
   }
 }
