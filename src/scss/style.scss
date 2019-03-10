@@ -66,6 +66,7 @@ nav li{
 
 nav li:hover{
   color: #1DB954;
+  cursor: pointer;
 }
 
 .logo {
@@ -181,10 +182,11 @@ input{
   width: 60%;
   height: 90%;
   border-radius: 15px;
+  display: inline;
 }
 
 .setlist-column {
-  display: none;
+  display:none;
   width: 60%;
   height: 90%;
   background-color: rgb(252, 150, 54);
