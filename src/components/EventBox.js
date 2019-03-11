@@ -70,7 +70,7 @@ class EventBox extends React.Component{
               </div>
             </div>
           </div>
-          <h3>{this.props.event.displayName.replace(/ *\([^)]*\) */g, '')}</h3>
+          <h3>{this.props.event.displayName.replace(/ *\([^)]*\) */g, '').substr(0,60-1)+(this.props.event.displayName.replace(/ *\([^)]*\) */g, '').length>60?'...':'')}</h3>
         </div>
       </a>
     )

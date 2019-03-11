@@ -28,12 +28,21 @@ class ArtistColumn extends React.Component {
             <h1>No events</h1>
             :
             <div>
-              {this.props.eventData.results.event.slice(0, 3).map(
-                event =>
-                  <EventBox key={event.id} event={event}/>
-              )
+              {!this.props.eventData.totalEntries
+                ?
+                <p>There are no upcoming events</p>
+                :
+                <div>
+                  {this.props.eventData.results.event.slice(0, 3).map(
+                    event =>
+                      <EventBox key={event.id} event={event}/>
+                  )
+                  }
+                  <p>{this.props.eventData.totalEntries} events on Songkick</p>
+
+                </div>
+
               }
-              <p>{this.props.eventData.totalEntries} events on Songkick</p>
             </div>
           }
         </div>
@@ -44,7 +53,7 @@ class ArtistColumn extends React.Component {
             <h1>No events</h1>
             :
             <div>
-              {this.props.setlistData.setlist.slice(0, 4).map(
+              {this.props.setlistData.setlist.map(
                 setlist =>
                   <SetlistBox key={setlist.id} setlist={setlist}/>
               )}

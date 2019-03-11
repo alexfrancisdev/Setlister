@@ -30,7 +30,7 @@ class Main extends React.Component {
   }
 
   getEventData(){
-    console.log('state is', this.state)
+    console.log('state is', this.state.setlistData)
     axios.get(`https://api.songkick.com/api/3.0/artists/mbid:${this.state.selectedArtistData.mbid}/calendar.json?apikey=A7oaG4mya2JfrR6V`)
       .then(result => this.setState({ eventData: result.data.resultsPage })).then(() => console.log(this.state))
   }
