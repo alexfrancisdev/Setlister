@@ -1,6 +1,7 @@
 import React from 'react'
 
 import EventBox from './EventBox'
+import SetlistBox from './SetlistBox'
 
 class ArtistColumn extends React.Component {
   constructor(props){
@@ -11,7 +12,7 @@ class ArtistColumn extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="artist-column">
         <div>
           {!this.props.selectedArtistData
             ?
@@ -26,11 +27,10 @@ class ArtistColumn extends React.Component {
             <h1>No events</h1>
             :
             <div>
-              {this.props.eventData.results.event.map(
+              {this.props.eventData.results.event.slice(0, 3).map(
                 event =>
                   <EventBox key={event.id} event={event}/>
               )
-
               }
             </div>
           }
@@ -40,7 +40,12 @@ class ArtistColumn extends React.Component {
             ?
             <h1>No events</h1>
             :
-            <h1>{this.props.setlistData.total} setlists avalible</h1>
+            <div>
+              {this.props.setlistData.setlist.slice(0, 4).map(
+                setlist =>
+                  <SetlistBox key={setlist.id} setlist={setlist}/>
+              )}
+            </div>
           }
         </div>
       </div>

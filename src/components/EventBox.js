@@ -3,12 +3,71 @@ import React from 'react'
 class EventBox extends React.Component{
   constructor(props){
     super(props)
+    this.dateFormatter = this.dateFormatter.bind(this)
+    this.tidyName = this.tidyName.bind(this)
+  }
+
+  dateFormatter(date){
+    date = date.split('-').reverse()
+    let month = date[1]
+    switch(month){
+      case '01':
+        month = 'JAN'
+        break
+      case '02':
+        month = 'FEB'
+        break
+      case '03':
+        month = 'MAR'
+        break
+      case '04':
+        month = 'APR'
+        break
+      case '05':
+        month = 'MAY'
+        break
+      case '06':
+        month = 'JUN'
+        break
+      case '07':
+        month = 'JUL'
+        break
+      case '08':
+        month = 'AUG'
+        break
+      case '09':
+        month = 'SEP'
+        break
+      case '10':
+        month = 'OCT'
+        break
+      case '11':
+        month = 'NOV'
+        break
+      case '12':
+        month = 'DEC'
+        break
+    }
+    date[1] = month
+    return date
+  }
+
+  tidyName(name){
+    return name.replace(/ *\([^)]*\) */g, '')
   }
 
   render(){
     return(
-      <div>
-        <h1>{this.props.event.displayName}</h1>
+      <div className="event-box">
+        <div className="date-box">
+          <div className="date-container">
+            {this.dateFormatter(this.props.event.start.date).map(
+              date =>
+                <span key={date}>{date}</span>
+            )}
+          </div>
+        </div>
+        <h3>{this.props.event.displayName.replace(/ *\([^)]*\) */g, '')}</h3>
       </div>
     )
   }
