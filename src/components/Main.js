@@ -46,7 +46,7 @@ class Main extends React.Component {
             ?
             <NewsColumn />
             :
-            <ArtistColumn selectedArtistData={this.state.selectedArtist} setlistData={this.state.selectedArtist} eventData={this.state.eventData}/>
+            <ArtistColumn selectedArtistData={this.state.selectedArtist} setlistData={this.state.setlistData} eventData={this.state.eventData}/>
           }
 
           <div className="setlist-column">

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import EventBox from './EventBox'
+
 class ArtistColumn extends React.Component {
   constructor(props){
     super(props)
@@ -23,7 +25,22 @@ class ArtistColumn extends React.Component {
             ?
             <h1>No events</h1>
             :
-            <h1>{this.eventData.totalEntries.length} events on Songkick</h1>
+            <div>
+              {this.props.eventData.results.event.map(
+                event =>
+                  <EventBox key={event.id} event={event}/>
+              )
+
+              }
+            </div>
+          }
+        </div>
+        <div>
+          {!this.props.setlistData
+            ?
+            <h1>No events</h1>
+            :
+            <h1>{this.props.setlistData.total} setlists avalible</h1>
           }
         </div>
       </div>
