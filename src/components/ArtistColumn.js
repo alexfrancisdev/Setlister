@@ -22,6 +22,7 @@ class ArtistColumn extends React.Component {
           }
         </div>
         <div>
+          <h2>Upcoming Events</h2>
           {!this.props.eventData
             ?
             <h1>No events</h1>
@@ -32,10 +33,12 @@ class ArtistColumn extends React.Component {
                   <EventBox key={event.id} event={event}/>
               )
               }
+              <p>{this.props.eventData.totalEntries} events on Songkick</p>
             </div>
           }
         </div>
         <div>
+          <h2>Setlists</h2>
           {!this.props.setlistData
             ?
             <h1>No events</h1>

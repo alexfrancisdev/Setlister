@@ -58,17 +58,21 @@ class EventBox extends React.Component{
 
   render(){
     return(
-      <div className="event-box">
-        <div className="date-box">
-          <div className="date-container">
-            {this.dateFormatter(this.props.event.start.date).map(
-              date =>
-                <span key={date}>{date}</span>
-            )}
+      <a href={this.props.event.uri} target="_blank" rel="noopener noreferrer">
+        <div className="event-box">
+          <div className="date-box">
+            <div className="date-container">
+              <span className="day">{this.dateFormatter(this.props.event.start.date)[0]}</span>
+              <div>
+                <span className="month">{this.dateFormatter(this.props.event.start.date)[1]}</span>
+                <span> </span>
+                <span className="year">{this.dateFormatter(this.props.event.start.date)[2]}</span>
+              </div>
+            </div>
           </div>
+          <h3>{this.props.event.displayName.replace(/ *\([^)]*\) */g, '')}</h3>
         </div>
-        <h3>{this.props.event.displayName.replace(/ *\([^)]*\) */g, '')}</h3>
-      </div>
+      </a>
     )
   }
 }

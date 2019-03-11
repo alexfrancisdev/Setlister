@@ -6,6 +6,11 @@
   font-family: 'Roboto', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 html, body {margin: 0; height: 100%; overflow: hidden}
 
 main {
@@ -196,7 +201,6 @@ input{
 .artist-column {
   width: 60%;
   height: 90%;
-  background-color: rgb(252, 150, 54);
   border-radius: 15px;
 }
 
@@ -212,11 +216,16 @@ input{
 .event-box {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.event-box:hover{
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .date-box {
   display: flex;
-  height: 80px;
   width: 80px;
   justify-content: center;
   align-items: center;
@@ -226,5 +235,12 @@ input{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
+.date-container div span {
+  font-size: 14px;
+}
+
+.day {
+  font-size: 25px;
 }
