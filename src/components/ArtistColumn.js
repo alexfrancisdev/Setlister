@@ -21,7 +21,7 @@ class ArtistColumn extends React.Component {
             <h1>{this.props.selectedArtistData}</h1>
           }
         </div>
-        <div>
+        <div className="event-section">
           <h2>Upcoming Events</h2>
           {!this.props.eventData
             ?
@@ -46,7 +46,7 @@ class ArtistColumn extends React.Component {
             </div>
           }
         </div>
-        <div>
+        <div className="setlist-section">
           <h2>Setlists</h2>
           {!this.props.setlistData
             ?

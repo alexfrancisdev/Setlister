@@ -5,6 +5,7 @@ class SetlistBox extends React.Component{
     super(props)
     this.dateFormatter = this.dateFormatter.bind(this)
     this.tidyName = this.tidyName.bind(this)
+    this.calculateSongNum = this.calculateSongNum.bind(this)
   }
 
   dateFormatter(date){
@@ -56,6 +57,15 @@ class SetlistBox extends React.Component{
     return name.replace(/ *\([^)]*\) */g, '')
   }
 
+  calculateSongNum(sets){
+    console.log('sets is ', sets)
+    let songNum = 0
+    sets.set.forEach((set) =>
+      songNum = songNum + set.song.length
+    )
+    return songNum
+  }
+
   render(){
     return(
       <div className="event-box">
@@ -72,11 +82,11 @@ class SetlistBox extends React.Component{
         <div>
           <span>{this.props.setlist.venue.name.replace(/ *\([^)]*\) */g, '').substr(0,60-1)+(this.props.setlist.venue.name.replace(/ *\([^)]*\) */g, '').length>60?'...':'')}</span>
           <span> - {this.props.setlist.venue.city.name}, {this.props.setlist.venue.city.country.code}</span>
-          {!this.props.setlist.sets.set && this.props.setlist.sets.set[0].song.length < 1
+          {!this.props.setlist.sets.set.length > 0
             ?
-            <h3>No</h3>
+            <h3>0 songs</h3>
             :
-            <h3>Yes</h3>
+            <h3>{this.calculateSongNum(this.props.setlist.sets)} songs</h3>
           }
         </div>
       </div>
