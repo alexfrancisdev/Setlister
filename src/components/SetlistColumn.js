@@ -27,7 +27,7 @@ class SetlistColumn extends React.Component {
         <div>
           {this.setsToSingleArray().map(
             song =>
-              <p key={song}>{song}</p>
+              <SongResult key={song} song={song}/>
           )}
         </div>
       </div>
