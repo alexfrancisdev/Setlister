@@ -13,6 +13,7 @@ class Main extends React.Component {
     this.getArtistInfo = this.getArtistInfo.bind(this)
     this.getSetlistData = this.getSetlistData.bind(this)
     this.getEventData = this.getEventData.bind(this)
+    this.selectSetlist = this.selectSetlist.bind(this)
   }
 
   selectArtist(artist){
@@ -30,9 +31,12 @@ class Main extends React.Component {
   }
 
   getEventData(){
-    console.log('state is', this.state.setlistData)
     axios.get(`https://api.songkick.com/api/3.0/artists/mbid:${this.state.selectedArtistData.mbid}/calendar.json?apikey=A7oaG4mya2JfrR6V`)
       .then(result => this.setState({ eventData: result.data.resultsPage })).then(() => console.log(this.state))
+  }
+
+  selectSetlist(props){
+    this.setState({ selectedSetlist: props})
   }
 
 
@@ -46,7 +50,7 @@ class Main extends React.Component {
             ?
             <NewsColumn />
             :
-            <ArtistColumn selectedArtistData={this.state.selectedArtist} setlistData={this.state.setlistData} eventData={this.state.eventData}/>
+            <ArtistColumn  selectSetlist={this.selectSetlist} selectedArtistData={this.state.selectedArtist} setlistData={this.state.setlistData} eventData={this.state.eventData}/>
           }
 
           <div className="setlist-column">

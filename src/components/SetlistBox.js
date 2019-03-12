@@ -6,6 +6,7 @@ class SetlistBox extends React.Component{
     this.dateFormatter = this.dateFormatter.bind(this)
     this.tidyName = this.tidyName.bind(this)
     this.calculateSongNum = this.calculateSongNum.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   dateFormatter(date){
@@ -58,7 +59,6 @@ class SetlistBox extends React.Component{
   }
 
   calculateSongNum(sets){
-    console.log('sets is ', sets)
     let songNum = 0
     sets.set.forEach((set) =>
       songNum = songNum + set.song.length
@@ -66,9 +66,13 @@ class SetlistBox extends React.Component{
     return songNum
   }
 
+  handleClick(){
+    this.props.selectSetlist(this.props.setlist)
+  }
+
   render(){
     return(
-      <div className="event-box">
+      <div className="event-box" onClick={this.handleClick}>
         <div className="date-box">
           <div className="date-container">
             <span className="day">{this.dateFormatter(this.props.setlist.eventDate)[0]}</span>

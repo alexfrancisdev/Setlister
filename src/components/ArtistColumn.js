@@ -6,8 +6,13 @@ import SetlistBox from './SetlistBox'
 class ArtistColumn extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
-    }
+    this.handleClick = this.handleClick.bind(this)
+    this.state = {}
+
+  }
+
+  handleClick(){
+    console.log('clicked')
   }
 
   render(){
@@ -27,7 +32,7 @@ class ArtistColumn extends React.Component {
             ?
             <h1>No events</h1>
             :
-            <div>
+            <div className="event-results">
               {!this.props.eventData.totalEntries
                 ?
                 <p>There are no upcoming events</p>
@@ -52,10 +57,10 @@ class ArtistColumn extends React.Component {
             ?
             <h1>No events</h1>
             :
-            <div>
+            <div className="setlist-results" >
               {this.props.setlistData.setlist.map(
                 setlist =>
-                  <SetlistBox key={setlist.id} setlist={setlist}/>
+                  <SetlistBox key={setlist.id} selectSetlist={this.props.selectSetlist} setlist={setlist} onClick={this.props.handleClick} />
               )}
             </div>
           }
