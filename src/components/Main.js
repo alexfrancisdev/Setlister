@@ -4,6 +4,7 @@ import axios from 'axios'
 import SearchColumn from './SearchColumn'
 import NewsColumn from './NewsColumn'
 import ArtistColumn from './ArtistColumn'
+import SetlistColumn from './SetlistColumn'
 
 class Main extends React.Component {
   constructor(props){
@@ -36,7 +37,7 @@ class Main extends React.Component {
   }
 
   selectSetlist(props){
-    this.setState({ selectedSetlist: props})
+    this.setState({ selectedSetlist: props })
   }
 
 
@@ -52,13 +53,12 @@ class Main extends React.Component {
             :
             <ArtistColumn  selectSetlist={this.selectSetlist} selectedArtistData={this.state.selectedArtist} setlistData={this.state.setlistData} eventData={this.state.eventData}/>
           }
-
-          <div className="setlist-column">
-
-          </div>
-          <div className="playlist-column">
-
-          </div>
+          {!this.state.selectedSetlist
+            ?
+            <span></span>
+            :
+            <SetlistColumn setlist={this.state.selectedSetlist}/>
+          }
         </div>
       </div>
     )
