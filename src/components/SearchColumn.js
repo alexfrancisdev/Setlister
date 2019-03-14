@@ -19,9 +19,9 @@ class SearchColumn extends React.Component {
   artistSearch(){
     if (this.state.search.length > 0){
       axios
-        .get(`https://api.spotify.com/v1/search?query=${this.state.search}&type=artist&limit=6`, {headers: { 'Authorization': 'Bearer BQCj21_ongl7Uw_SYHXNRk0mfhv6s46QyzWXXU1rdyKTgE2wZonladKtftNJvkqxdCUewW7w2qTcCzaY6ON0pJmOfGMecok6XsLVLjFTjkycmaDYx_vPyqDBcFmFSNstWHK3vjd3i-aALkHctVpUFeQrfdCl5lLUx8gU'} })
+        .get(`https://api.spotify.com/v1/search?query=${this.state.search}&type=artist&limit=6`, {headers: { 'Authorization': 'Bearer BQCe0yMZqTkTmpRXgbO4MhmwPG-1fanK1fdwZbMKMveqrRCRk9dO5sOAV_OiyyHJEtbYfRG2OhqX3FjAwUH3ZRTmlGXvm3QLdCUrU7scwD94BAuSp39Ef1WY3xtqaYWqVyBxRy_Kmi-XwSZ4-j-p1CW-LYY6KFYR0h6S'} })
         .then(result => this.setState({ searchResults: result.data }))
-    }
+    } 
   }
 
   render(){
